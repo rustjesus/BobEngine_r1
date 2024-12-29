@@ -452,9 +452,13 @@ namespace GraphicsApp
                 }
                 UIManager.CalculateAndUpdateFPS();
 
+                if(EnemyCubes.rotateEnemyCubes)
+                {
 
-                // Cube rotation and rendering
-                rotationSpeed += 0.001f;
+                    // Cube rotation and rendering
+                    rotationSpeed += 0.001f;
+
+                }
                 // First Cube: Original Position (matrix1)
                 var rotationX = Matrix.RotationX(rotationSpeed * 0.5f);
                 var rotationY = Matrix.RotationY(rotationSpeed);

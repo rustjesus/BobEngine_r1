@@ -19,6 +19,7 @@ namespace GraphicsApp.GameScripts
         private float enemySize = 0.2f;
         private float colSize;
         public CubeWithCollider[] cubes;
+        public static bool rotateEnemyCubes = true;
         public void InitializeEnemyCubes(Vector3[] cubePos, Device device, CollisionManager collisionManager)
         {   
             // Initialize the cubes array with 3 elements
@@ -91,11 +92,8 @@ namespace GraphicsApp.GameScripts
 
                     worldViewProjection = Matrix.Transpose(worldMatrix * camera.GetViewProjection());
 
-                    var greenColor = new Vector4(0.0f, 1.0f, 0.0f, 1.0f); // Green color
                     cubes[i].UpdateColliderPosition(cubePos[i], colSize);
                     cubes[i].RenderDX11(context, worldViewProjection);
-                    // Render the collider as a green bounding box
-                    //cubes[i].RenderCollider(lineRenderer, worldViewProjection, new Vector4(0, 1, 0, 1)); // Green color
                 }
             }
 
