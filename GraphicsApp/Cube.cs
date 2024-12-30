@@ -26,6 +26,7 @@ namespace GraphicsApp
         public bool isDestroyed { get; set; }
         public bool isDestroyedHandled = false;
 
+
         // Vertex structure with position, color, and normal
         struct Vertex
         {
@@ -383,9 +384,13 @@ namespace GraphicsApp
 
         public Vector3 Velocity { get; set; }
         public Vector3 Position { get; private set; }
+        public Matrix WorldMatrix { get; set; } = Matrix.Identity;
+
+
         public CubeWithCollider(SharpDX.Direct3D11.Device device, Vector3 position, float size, CollisionManager collisionManager)
             : base(device)
         {
+            WorldMatrix = Matrix.Translation(position);
             cubeSize = size;
             Position = position;
             Vector3 halfSize = new Vector3(size / 2);

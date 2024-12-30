@@ -182,6 +182,7 @@
     <Compile Include="FromDX9.cs" />
     <Compile Include="GameScripts\EnemyCubes.cs" />
     <Compile Include="GameScripts\GameInput.cs" />
+    <Compile Include="GameScripts\GameManager.cs" />
     <Compile Include="GameScripts\Projectile.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Light.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Shadow.cs" />
     <Compile Include="SpriteTextRenderer.cs" />
     <Compile Include="TextureLoader.cs" />
+    <Compile Include="Time.cs" />
     <Compile Include="UIForm.cs">
       <SubType>Form</SubType>
     </Compile>

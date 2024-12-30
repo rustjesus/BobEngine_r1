@@ -359,13 +359,13 @@ namespace GraphicsApp
             cubes[2] = new CubeWithCollider(device, cubePos[2], 0.1f, collisionManager);
             */
 
-            cubePos = new Vector3[3];//set the enemy cube count
-            enemyCubes.InitializeEnemyCubes(cubePos, device, collisionManager);
+            cubePos = new Vector3[GameManager.enemyCount];//set the enemy cube count
+            enemyCubes.InitializeEnemyCubes(cubePos, device, collisionManager, GameManager.enemyCount);
 
             enemyCubes.SetEnemyCubeSizes();
 
 
-            /*
+            
             light = new Light(new Vector3(1, 1, 0), new Vector3(1, 0.5f, 1), 100f); // Light position, color, intensity
 
             LightData lightData = new LightData(light.Position, light.Color, light.Intensity);
@@ -382,7 +382,7 @@ namespace GraphicsApp
                     BindFlags = BindFlags.ConstantBuffer,
                     CpuAccessFlags = CpuAccessFlags.None
                 });
-            }*/
+            }
 
             // Initialize shadow system
             //shadow = new Shadow(device, ClientSize.Width, ClientSize.Height);

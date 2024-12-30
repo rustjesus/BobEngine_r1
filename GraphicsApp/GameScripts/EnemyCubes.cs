@@ -20,17 +20,19 @@ namespace GraphicsApp.GameScripts
         private float colSize;
         public CubeWithCollider[] cubes;
         public static bool rotateEnemyCubes = true;
-        public void InitializeEnemyCubes(Vector3[] cubePos, Device device, CollisionManager collisionManager)
+        public void InitializeEnemyCubes(Vector3[] cubePos, Device device, CollisionManager collisionManager, int enemyCount)
         {   
             // Initialize the cubes array with 3 elements
-            cubePos[0] = new Vector3(-5.0f, 0.0f, 15f);
-            cubePos[1] = new Vector3(0f, 0.0f, 15f);
-            cubePos[2] = new Vector3(5.0f, 0.0f, 15f);
+            cubePos[0] = new Vector3(-25.0f, 0.0f, -12.5f);
+            cubePos[1] = new Vector3(0f, 0.0f, 25f);
+            cubePos[2] = new Vector3(25.0f, 0.0f, -12.5f);
+            cubePos[3] = new Vector3(0f, 0.0f, -25f);
 
-            cubes = new CubeWithCollider[3];
+            cubes = new CubeWithCollider[enemyCount];
             cubes[0] = new CubeWithCollider(device, cubePos[0], enemySize, collisionManager);
             cubes[1] = new CubeWithCollider(device, cubePos[1], enemySize, collisionManager);
             cubes[2] = new CubeWithCollider(device, cubePos[2], enemySize, collisionManager);
+            cubes[3] = new CubeWithCollider(device, cubePos[3], enemySize, collisionManager);
 
             SetEnemyCubeSizes();
         }

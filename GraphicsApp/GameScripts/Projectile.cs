@@ -50,6 +50,7 @@ namespace GraphicsApp.GameScripts
 
             Console.WriteLine($"Spawned a new cube projectile at position {cameraPosition}, velocity: {newCube.Velocity}.");
         }
+        private Vector3 previousPosition = Vector3.Zero;
         public void UpdateAndRenderProjectiles(float deltaTime, Camera camera, DeviceContext context, LineRenderer lineRenderer)
         {
             colliderSize = cubeSize * 2;
@@ -76,7 +77,24 @@ namespace GraphicsApp.GameScripts
                     var greenColor = new Vector4(0.0f, 1.0f, 0.0f, 1.0f); // Green color
                     var redColor = new Vector4(1.0f, 0.0f, 0.0f, 1.0f); // red color
                     lineRenderer.RenderWireframeCube(spawnedCube.Position, colliderSize, camera.GetViewProjection(), greenColor);
-                    lineRenderer.UpdateAndRenderMovingLine(spawnedCube.Position, new Vector3(0,0,0), camera.GetViewProjection(), greenColor, redColor);
+                    // Calculate the cube's movement direction
+                    Vector3 currentPosition = spawnedCube.Position;
+                    Vector3 movementDirection = currentPosition + previousPosition;
+
+                    // Normalize the direction and calculate the trailing position
+                    Vector3 trailingPosition = currentPosition - Vector3.Normalize(movementDirection) * 3;
+
+                    // Update the line renderer to trail behind the cube
+                    lineRenderer.UpdateAndRenderMovingLine(
+                        currentPosition, // Front of the line
+                        trailingPosition, // Back of the line
+                        camera.GetViewProjection(),
+                        greenColor,
+                        redColor
+                    );
+
+                    // Update the previous position
+                    previousPosition = currentPosition;
                 }
             }
             CleanupDestroyedCubes();

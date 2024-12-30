@@ -50,6 +50,29 @@ public class Renderer
         context.OutputMerger.SetRenderTargets(depthStencilView, renderTargetView);
         context.Rasterizer.SetViewport(viewport);
     }
+    public void UpdateLightData(DeviceContext context, Light light)
+    {
+        var lightData = new LightData(light.Position, light.Color, light.Intensity);
+
+        // Create a constant buffer for light data
+        using (var stream = new DataStream(Utilities.SizeOf<LightData>(), true, true))
+        {
+            stream.Write(lightData);
+            stream.Position = 0;
+
+            using (var lightBuffer = new SharpDX.Direct3D11.Buffer(device11, stream, new BufferDescription
+            {
+                SizeInBytes = Utilities.SizeOf<LightData>(),
+                Usage = ResourceUsage.Default,
+                BindFlags = BindFlags.ConstantBuffer,
+                CpuAccessFlags = CpuAccessFlags.None,
+                OptionFlags = ResourceOptionFlags.None
+            }))
+            {
+                context.PixelShader.SetConstantBuffer(1, lightBuffer);
+            }
+        }
+    }
 
     public void Resize(int width, int height)
     {
