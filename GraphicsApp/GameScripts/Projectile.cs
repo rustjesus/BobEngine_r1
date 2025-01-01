@@ -79,15 +79,11 @@ namespace GraphicsApp.GameScripts
                     lineRenderer.RenderWireframeCube(spawnedCube.Position, colliderSize, camera.GetViewProjection(), greenColor);
                     // Calculate the cube's movement direction
                     Vector3 currentPosition = spawnedCube.Position;
-                    Vector3 movementDirection = currentPosition + previousPosition;
-
-                    // Normalize the direction and calculate the trailing position
-                    Vector3 trailingPosition = currentPosition - Vector3.Normalize(movementDirection) * 3;
 
                     // Update the line renderer to trail behind the cube
                     lineRenderer.UpdateAndRenderMovingLine(
                         currentPosition, // Front of the line
-                        trailingPosition, // Back of the line
+                        previousPosition, // Back of the line
                         camera.GetViewProjection(),
                         greenColor,
                         redColor
