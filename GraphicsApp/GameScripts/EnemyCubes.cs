@@ -23,10 +23,10 @@ namespace GraphicsApp.GameScripts
         public void InitializeEnemyCubes(Vector3[] cubePos, Device device, CollisionManager collisionManager, int enemyCount)
         {   
             // Initialize the cubes array with 3 elements
-            cubePos[0] = new Vector3(-25.0f, 0.0f, -12.5f);
-            cubePos[1] = new Vector3(0f, 0.0f, 25f);
-            cubePos[2] = new Vector3(25.0f, 0.0f, -12.5f);
-            cubePos[3] = new Vector3(0f, 0.0f, -25f);
+            cubePos[0] = new Vector3(-5.0f, 0.0f, 5f);
+            cubePos[1] = new Vector3(0f, 0.0f, 5f);
+            cubePos[2] = new Vector3(5.0f, 0.0f, 5f);
+            cubePos[3] = new Vector3(0f, 2f, 5f);
 
             cubes = new CubeWithCollider[enemyCount];
             cubes[0] = new CubeWithCollider(device, cubePos[0], enemySize, collisionManager);
