@@ -59,19 +59,19 @@ namespace GraphicsApp.GameScripts
             {
                 camera.AddMovement(Vector3.UnitY); // Move up
             }
-            if (input.IsKeyPressed(Keys.NumPad6))
+            if (input.IsKeyPressed(Keys.L))
             {
                 camera.AddRotationYaw(0.1f); // Rotate left
             }
-            if (input.IsKeyPressed(Keys.NumPad4))
+            if (input.IsKeyPressed(Keys.J))
             {
                 camera.AddRotationYaw(-0.1f); // Rotate right
             }
-            if (input.IsKeyPressed(Keys.NumPad8))
+            if (input.IsKeyPressed(Keys.I))
             {
                 camera.AddRotationPitch(0.1f); // Rotate up
             }
-            if (input.IsKeyPressed(Keys.NumPad2))
+            if (input.IsKeyPressed(Keys.K))
             {
                 camera.AddRotationPitch(-0.1f); // Rotate down
             }

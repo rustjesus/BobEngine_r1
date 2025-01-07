@@ -184,6 +184,7 @@
     <Compile Include="GameScripts\GameInput.cs" />
     <Compile Include="GameScripts\GameManager.cs" />
     <Compile Include="GameScripts\Projectile.cs" />
+    <Compile Include="GameScripts\TextureRenderer.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Light.cs" />
     <Compile Include="LightData.cs" />

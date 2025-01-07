@@ -57,6 +57,7 @@ namespace GraphicsApp
         public Vector3[] cubePos;
         private Matrix localRot;
         private GameInput gameInput;
+        private TextureRenderer textureRenderer;
         public Form1()
         {
             usingDirectx9 = directx9;
@@ -72,6 +73,7 @@ namespace GraphicsApp
             projectile = new Projectile();
             enemyCubes = new EnemyCubes();
             gameInput = new GameInput();
+            textureRenderer = new TextureRenderer();
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
 
@@ -344,7 +346,7 @@ namespace GraphicsApp
 
             camera = new Camera(new Vector3(0, 0, -5), Vector3.Zero, Vector3.UnitY, ClientSize.Width / (float)ClientSize.Height);
 
-
+            textureRenderer.LoadTexture(device, @"C:\Users\Overlord\Desktop\GraphicsApp_v0.2.5\GraphicsApp\bin\Debug\Content\1px.png");
             //gameLogic.LoadEnemyCubes(cubes, collisionManager, cubePos, device);
             /*
             // Initialize the array and set its first element
@@ -474,14 +476,6 @@ namespace GraphicsApp
                 // Update and render spawned cubes
                 if (directx11)
                 {
-                    ///ENEMY RENDER
-
-
-                    ///ENEMY RENDER END
-                    ///
-
-
-
                     //TESTING*********
                     // Example usage of LineRenderer.RenderLine
                     var start = new Vector3(0, 0, 0); // Starting point of the line
@@ -495,6 +489,7 @@ namespace GraphicsApp
                     lineRenderer.RenderLine(start, end, viewProjectionMatrix, greenColor, redColor);
                     lineRenderer.RenderWireframeCube(start, 2, viewProjectionMatrix, redColor, localRot);
 
+                    //textureRenderer.Render(context, viewProjectionMatrix, worldMatrix);
                     // Render existing cubes (enemies)
                     shader11.SetShaders(context); // Set the cube shader
                     //render enemy cubes
